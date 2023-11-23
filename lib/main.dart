@@ -7,12 +7,12 @@ void main() async {
   final getTrending = getItInstance<GetTrending>();
 
   getTrending();
-  // // var _dioClient = Dio();
-  // // final ApiClient apiClient = ApiClient(_dioClient);
-  // // MovieRemoteDataSource dataSource = MovieRemoteDataSourceImplemented(apiClient);
-  // // MovieRepository moviedata = MovieRepositoryImplementation(dataSource);
-  // // moviedata.getTrending();
-  // // GetTrending getTrending = GetTrending(moviedata);
+  // var _dioClient = Dio();
+  // final ApiClient apiClient = ApiClient(_dioClient);
+  // MovieRemoteDataSource dataSource = MovieRemoteDataSourceImplemented(apiClient);
+  // MovieRepository moviedata = MovieRepositoryImplementation(dataSource);
+  // moviedata.getTrending();
+  // GetTrending getTrending = GetTrending(moviedata);
   // getTrending();
   // dataSource.getPopular();
   // dataSource.getTrending();
