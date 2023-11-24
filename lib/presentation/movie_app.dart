@@ -9,7 +9,7 @@ class MovieApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ScreenUtil.init(context);
+    ScreenUtil.init(context, designSize: const Size(414, 896));
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Movie App',
