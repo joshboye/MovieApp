@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movieapp/di/get_it.dart';
 import 'package:movieapp/presentation/blocs/movie_carousal/movie_carousal_bloc.dart';
-import 'package:movieapp/presentation/widgets/movie_carousal_widget.dart';
+import 'package:movieapp/presentation/journeys/home/movie_carousal/movie_carousal_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
