@@ -23,7 +23,7 @@ class MovieAppBar extends StatelessWidget {
                 'assets/svgs/menu.svg',
                 height: Sizes.dimen_25.h,
               )),
-          Expanded(child: Logo(height: Sizes.dimen_25.h)),
+          Expanded(child: Logo(height: Sizes.dimen_40.h)),
           IconButton(
               onPressed: () {},
               icon: Icon(

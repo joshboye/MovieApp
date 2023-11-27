@@ -6,3 +6,14 @@ sealed class MovieBackdropEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
+
+class MovieBackdropChangedEvent extends MovieBackdropEvent {
+  final MovieEntity movies;
+
+  MovieBackdropChangedEvent(this.movies);
+
+  @override
+  List<Object> get props => [
+        movies
+      ];
+}
