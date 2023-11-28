@@ -13,6 +13,7 @@ class Seperator extends StatelessWidget {
     return Container(
         height: Sizes.dimen_1,
         width: Sizes.dimen_80,
+        margin: EdgeInsets.only(top: Sizes.dimen_4.h, bottom: Sizes.dimen_4.h),
         padding: EdgeInsets.only(top: Sizes.dimen_4.h, bottom: Sizes.dimen_4.h),
         decoration: const BoxDecoration(
             gradient: LinearGradient(colors: [

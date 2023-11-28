@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movieapp/di/get_it.dart';
 import 'package:movieapp/presentation/blocs/movie_backdrop/movie_backdrop_bloc.dart';
+import 'package:movieapp/presentation/blocs/movie_bottom_tabs/movie_bottom_tabs_bloc.dart';
 import 'package:movieapp/presentation/blocs/movie_carousal/movie_carousal_bloc.dart';
+import 'package:movieapp/presentation/journeys/home/movie_bottom_tabs/movie_bottom_tabs_lists_widget.dart';
 import 'package:movieapp/presentation/journeys/home/movie_carousal/movie_carousal_widget.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -15,11 +17,13 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   late MovieCarousalBloc movieCarousalBloc;
   late MovieBackdropBloc movieBackdropBloc;
+  late MovieBottomTabsBloc movieBottomTabsBloc;
   @override
   void initState() {
     super.initState();
     movieCarousalBloc = getItInstance<MovieCarousalBloc>();
     movieBackdropBloc = getItInstance<MovieBackdropBloc>();
+    movieBottomTabsBloc = getItInstance<MovieBottomTabsBloc>();
     movieCarousalBloc.add(CarousalLoadEvent());
   }
 
@@ -28,6 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
     super.dispose();
     movieCarousalBloc.close();
     movieBackdropBloc.close();
+    movieBottomTabsBloc.close();
   }
 
   @override
@@ -39,6 +44,9 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         BlocProvider<MovieBackdropBloc>(
           create: (context) => movieBackdropBloc,
+        ),
+        BlocProvider<MovieBottomTabsBloc>(
+          create: (context) => movieBottomTabsBloc,
         ),
       ],
       child: Scaffold(
@@ -60,9 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   const FractionallySizedBox(
                     alignment: Alignment.bottomCenter,
                     heightFactor: 0.4,
-                    child: Placeholder(
-                      color: Colors.greenAccent,
-                    ),
+                    child: MovieBottomTabsListsWidget(),
                   )
                 ],
               );
