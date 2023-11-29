@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movieapp/presentation/blocs/movie_bottom_tabs/movie_bottom_tabs_bloc.dart';
 import 'package:movieapp/presentation/journeys/home/movie_bottom_tabs/movie_list_view_builder.dart';
 import 'package:movieapp/presentation/journeys/home/movie_bottom_tabs/tab_title_name_widget.dart';
@@ -12,7 +13,7 @@ class MovieBottomTabsListsWidget extends StatefulWidget {
   State<MovieBottomTabsListsWidget> createState() => _MovieBottomTabsListsWidgetState();
 }
 
-class _MovieBottomTabsListsWidgetState extends State<MovieBottomTabsListsWidget> {
+class _MovieBottomTabsListsWidgetState extends State<MovieBottomTabsListsWidget> with SingleTickerProviderStateMixin {
   MovieBottomTabsBloc get movieBottomTabsBloc => BlocProvider.of<MovieBottomTabsBloc>(context);
 
   int currentTabIndex = 0;
@@ -35,7 +36,7 @@ class _MovieBottomTabsListsWidgetState extends State<MovieBottomTabsListsWidget>
     return BlocBuilder<MovieBottomTabsBloc, MovieBottomTabsState>(
       builder: (context, state) {
         return Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: EdgeInsets.only(top: 4.0.h),
           child: Column(
             children: [
               Row(
@@ -44,19 +45,21 @@ class _MovieBottomTabsListsWidgetState extends State<MovieBottomTabsListsWidget>
                 children: [
                   for (var i = 0; i < tabs.movieTabs.length; i++)
                     TabTitleNameWidget(
-                      onTap: () {
-                        movieBottomTabsBloc.add(MovieBottomTabsChangedEvent(i));
-                      },
+                      onTap: () => _onTapFunction(i),
                       title: tabs.movieTabs[i].title,
                       isSelected: tabs.movieTabs[i].index == state.currentTabIndex,
                     )
                 ],
               ),
-              if (state is MovieBottomTabsChanged) Expanded(child: MovieListViewBuilder(movies: state.movies))
+              if (state is MovieBottomTabsChanged) Flexible(child: MovieListViewBuilder(movies: state.movies))
             ],
           ),
         );
       },
     );
+  }
+
+  void _onTapFunction(int index) {
+    movieBottomTabsBloc.add(MovieBottomTabsChangedEvent(index));
   }
 }

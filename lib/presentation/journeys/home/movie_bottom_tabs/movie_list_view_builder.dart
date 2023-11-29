@@ -11,22 +11,27 @@ class MovieListViewBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-      itemBuilder: (context, index) {
-        final MovieEntity movie = movies[index];
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: Sizes.dimen_6.h),
+      child: ListView.separated(
+        shrinkWrap: true,
+        scrollDirection: Axis.horizontal,
+        itemBuilder: (context, index) {
+          final MovieEntity movie = movies[index];
 
-        return TabsCardWidget(
-          movieId: movie.id ?? 0,
-          title: movie.title ?? '',
-          posterPath: movie.posterPath ?? '',
-        );
-      },
-      separatorBuilder: (context, index) {
-        return SizedBox(
-          width: Sizes.dimen_10.w,
-        );
-      },
-      itemCount: movies.length,
+          return TabsCardWidget(
+            movieId: movie.id ?? 0,
+            title: movie.title ?? '',
+            posterPath: movie.posterPath ?? '',
+          );
+        },
+        separatorBuilder: (context, index) {
+          return SizedBox(
+            width: Sizes.dimen_14.w,
+          );
+        },
+        itemCount: movies.length,
+      ),
     );
   }
 }
