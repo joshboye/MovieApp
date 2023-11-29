@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movieapp/common/constants/size_constants.dart';
 import 'package:movieapp/presentation/blocs/movie_bottom_tabs/movie_bottom_tabs_bloc.dart';
 import 'package:movieapp/presentation/journeys/home/movie_bottom_tabs/movie_list_view_builder.dart';
 import 'package:movieapp/presentation/journeys/home/movie_bottom_tabs/tab_title_name_widget.dart';
@@ -51,7 +52,10 @@ class _MovieBottomTabsListsWidgetState extends State<MovieBottomTabsListsWidget>
                     )
                 ],
               ),
-              if (state is MovieBottomTabsChanged) Flexible(child: MovieListViewBuilder(movies: state.movies))
+              SizedBox(
+                height: Sizes.dimen_8.h,
+              ),
+              if (state is MovieBottomTabsChanged) Expanded(child: MovieListViewBuilder(movies: state.movies))
             ],
           ),
         );

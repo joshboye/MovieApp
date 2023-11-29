@@ -28,12 +28,12 @@ class TabTitleNameWidget extends StatelessWidget {
           style: isSelected
               ? TextStyle(
                   color: Colors.deepPurple,
-                  fontSize: Sizes.dimen_17.sp,
+                  fontSize: Sizes.dimen_18.sp,
                   fontWeight: FontWeight.w400,
                 )
               : TextStyle(
                   color: Colors.white,
-                  fontSize: Sizes.dimen_16.sp,
+                  fontSize: Sizes.dimen_18.sp,
                   fontWeight: FontWeight.w400,
                 ),
         ),

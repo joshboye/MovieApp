@@ -27,7 +27,7 @@ class MovieListViewBuilder extends StatelessWidget {
         },
         separatorBuilder: (context, index) {
           return SizedBox(
-            width: Sizes.dimen_14.w,
+            width: Sizes.dimen_1.w,
           );
         },
         itemCount: movies.length,
