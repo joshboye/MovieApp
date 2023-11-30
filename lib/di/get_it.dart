@@ -8,6 +8,7 @@ import 'package:movieapp/domain/repositories/movie_repository.dart';
 import 'package:movieapp/domain/usecases/get_comingsoon.dart';
 import 'package:movieapp/domain/usecases/get_playingnow.dart';
 import 'package:movieapp/domain/usecases/get_popular.dart';
+import 'package:movieapp/domain/usecases/get_searched_movies.dart';
 import 'package:movieapp/domain/usecases/get_trending.dart';
 import 'package:movieapp/presentation/blocs/movie_backdrop/movie_backdrop_bloc.dart';
 import 'package:movieapp/presentation/blocs/movie_bottom_tabs/movie_bottom_tabs_bloc.dart';
@@ -25,6 +26,7 @@ Future init() async {
   getItInstance.registerLazySingleton<GetPlopular>(() => GetPlopular(getItInstance()));
   getItInstance.registerLazySingleton<GetComingSoon>(() => GetComingSoon(getItInstance()));
   getItInstance.registerLazySingleton<GetPlayingNow>(() => GetPlayingNow(getItInstance()));
+  getItInstance.registerLazySingleton<GetSearchedMovies>(() => GetSearchedMovies(getItInstance()));
 
   getItInstance.registerFactory(() => MovieBackdropBloc());
   getItInstance.registerFactory(() => MovieCarousalBloc(getTrending: getItInstance()));
