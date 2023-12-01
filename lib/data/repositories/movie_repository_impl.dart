@@ -46,4 +46,14 @@ class MovieRepositoryImplementation extends MovieRepository {
       throw Exception('something went wrong');
     }
   }
+
+  @override
+  Future<List<MovieEntity>> getSearchedMovies(String searchTerm) async {
+    try {
+      final movies = await remoteDataSource.getSearchedMovies(searchTerm);
+      return movies;
+    } catch (e) {
+      throw Exception('something went wrong in getting seached movies');
+    }
+  }
 }

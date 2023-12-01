@@ -6,7 +6,8 @@ abstract class MovieRemoteDataSource {
   Future<List<MovieModel>> getPopular();
   Future<List<MovieModel>> getTrending();
   Future<List<MovieModel>> getPlayingNow();
-  Future<List<MovieModel>> getComingSoon();
+  Future<List<MovieModel>> getComingSoon(); 
+  Future<List<MovieModel>> getSearchedMovies(String searchTerm);
 }
 
 class MovieRemoteDataSourceImplemented extends MovieRemoteDataSource {
@@ -52,6 +53,18 @@ class MovieRemoteDataSourceImplemented extends MovieRemoteDataSource {
   @override
   Future<List<MovieModel>> getPlayingNow() async {
     final responsefromclient = await _client.get('/trending/movie/day');
+    final movies = MoviesResult.fromJson(responsefromclient).movies;
+    if (movies != null) {
+      print(movies);
+      return movies;
+    } else {
+      throw Exception('the movies plyaing now are null');
+    }
+  }
+  
+  @override
+  Future<List<MovieModel>> getSearchedMovies(String searchTerm) async {
+    final responsefromclient = await _client.get('/search/movies', params: {'query': searchTerm});
     final movies = MoviesResult.fromJson(responsefromclient).movies;
     if (movies != null) {
       print(movies);
